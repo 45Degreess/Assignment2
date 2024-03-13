@@ -1,4 +1,4 @@
-package Assigntment2.src;
+package Assignment_2.src;
 
 /**
  * Node of the AVLTree

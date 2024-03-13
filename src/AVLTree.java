@@ -1,4 +1,4 @@
-package Assigntment2.src;
+package Assignment_2.src;
 
 public class AVLTree<dataType extends Comparable>
 {

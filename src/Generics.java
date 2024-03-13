@@ -1,4 +1,4 @@
-package Assigntment2.src;
+package Assignment_2.src;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -82,18 +82,6 @@ public class Generics implements Comparable<Generics>
         {
             return this.term.equalsIgnoreCase(term);
         }
-
-        /**
-         * Method to update the sentence and the confidence score of the Object
-         * @param inSentence incoming Sentence
-         * @param inConfidence incoming confidence score
-         */
-        public void update(String inSentence,double inConfidence)
-        {
-            sentence = inSentence;
-            confidence_score = inConfidence;
-        }
-
         /**
          *
          * @return Values sentence and Confidence Score of the object in the format "[Sentence] (Confidence score: [confidence score])
@@ -103,7 +91,7 @@ public class Generics implements Comparable<Generics>
             DecimalFormat deci = new DecimalFormat("0.00");
             //change decimal separator to a point(.)
             deci.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
-            return sentence + " (Confidence score: "+ deci.format(confidence_score) +")";
+            return term +":" +sentence + " (Confidence score: "+ deci.format(confidence_score) +")";
         }
 
         /**
