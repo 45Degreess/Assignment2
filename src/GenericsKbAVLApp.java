@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+/**
+ * Main class that loads data into AVLTree and runs search queries
+ */
 public class GenericsKbAVLApp
 {
     /**
