@@ -161,4 +161,8 @@ public class AVLTree<dataType extends Comparable>
                 return search(d,node.getRight());
         }
     }
+    public AVLTreeNode<dataType> getRoot()
+    {
+        return root;
+    }
 }
