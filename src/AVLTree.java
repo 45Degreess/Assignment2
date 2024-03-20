@@ -6,6 +6,9 @@ public class AVLTree<dataType extends Comparable>
      * Instance variable for storing the root node of the AVL tree
      */
     private AVLTreeNode<dataType> root;
+    public  int insertCounter =0;
+    public  int searchCounter = 0;
+
 
     /**
      * Method to get the height of a node in the AVL Tree
@@ -107,11 +110,20 @@ public class AVLTree<dataType extends Comparable>
     private AVLTreeNode<dataType> insert ( dataType d, AVLTreeNode<dataType> node )
     {
         if (node == null)
-            return new AVLTreeNode<dataType> (d, null, null);
+        {
+            insertCounter++;
+            return new AVLTreeNode<dataType>(d, null, null);
+        }
         if (d.compareTo (node.getData()) <= 0)
-            node.setLeft(insert (d, node.getLeft()));
+        {
+            insertCounter++;
+            node.setLeft(insert(d, node.getLeft()));
+        }
         else
-            node.setRight(insert (d, node.getRight()));
+        {
+            insertCounter++;
+            node.setRight(insert(d, node.getRight()));
+        }
         return rebalance(node);
     }
 
@@ -129,10 +141,12 @@ public class AVLTree<dataType extends Comparable>
 
     public AVLTreeNode<dataType> search(dataType d,AVLTreeNode node)
     {
+        searchCounter++;
         if(d.compareTo(node.getData()) ==0)
             return node;
         else if (d.compareTo(node.getData()) <0)
         {
+            searchCounter++;
             if(node.getLeft() ==null)
                 return null;
             else
@@ -140,6 +154,7 @@ public class AVLTree<dataType extends Comparable>
         }
         else
         {
+            searchCounter++;
             if(node.getRight() ==null)
                 return null;
             else
