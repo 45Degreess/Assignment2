@@ -165,4 +165,45 @@ public class AVLTree<dataType extends Comparable>
     {
         return root;
     }
+
+    public void delete ( dataType d )
+    {
+        root = delete (d, root);
+    }
+    public AVLTreeNode<dataType> delete ( dataType d, AVLTreeNode<dataType> node )
+    {
+        if (node == null) return null;
+        if (d.compareTo (node.getData()) < 0)
+            node.setLeft(delete (d, node.getLeft()));
+        else if (d.compareTo (node.getData()) > 0)
+            node.setRight(delete (d, node.getRight()));
+        else
+        {
+            AVLTreeNode<dataType> q = node.getLeft();
+            AVLTreeNode<dataType> r = node.getRight();
+            if (r == null)
+                return q;
+            AVLTreeNode<dataType> min = findMin (r);
+            min.setRight(removeMin (r));
+            min.setLeft(q);
+            return rebalance (min);
+        }
+        return rebalance (node);
+    }
+
+    public AVLTreeNode<dataType> findMin ( AVLTreeNode<dataType> node )
+    {
+        if (node.getLeft() != null)
+            return findMin (node.getLeft());
+        else
+            return node;
+    }
+
+    public AVLTreeNode<dataType> removeMin ( AVLTreeNode<dataType> node )
+    {
+        if (node.getLeft() == null)
+            return node.getRight();
+        node.setLeft(removeMin (node.getLeft()));
+        return rebalance (node);
+    }
 }
