@@ -15,7 +15,6 @@ public class DB
     {
         try
         {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             conn = DriverManager.getConnection(url);
             
         } catch (SQLException e)

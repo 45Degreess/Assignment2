@@ -6,7 +6,13 @@ public class AVLTree<dataType extends Comparable>
      * Instance variable for storing the root node of the AVL tree
      */
     private AVLTreeNode<dataType> root;
+    /**
+     * Variable to store the amount of insert comparisons
+     */
     public  int insertCounter =0;
+    /**
+     * Variable to store the amount of search comparisons
+     */
     public  int searchCounter = 0;
 
 
@@ -109,9 +115,9 @@ public class AVLTree<dataType extends Comparable>
     }
     private AVLTreeNode<dataType> insert ( dataType d, AVLTreeNode<dataType> node )
     {
+        insertCounter++;
         if (node == null)
         {
-            insertCounter++;
             return new AVLTreeNode<dataType>(d, null, null);
         }
         if (d.compareTo (node.getData()) <= 0)
@@ -161,11 +167,20 @@ public class AVLTree<dataType extends Comparable>
                 return search(d,node.getRight());
         }
     }
+
+    /**
+     * Method that return the root node of the AVL Tree
+     * @return root node
+     */
     public AVLTreeNode<dataType> getRoot()
     {
         return root;
     }
 
+    /**
+     * Deletes a node from the AVL Tree
+     * @param d data of the node to be deleted
+     */
     public void delete ( dataType d )
     {
         root = delete (d, root);
@@ -206,4 +221,17 @@ public class AVLTree<dataType extends Comparable>
         node.setLeft(removeMin (node.getLeft()));
         return rebalance (node);
     }
+
+    public int getSize ()
+    {
+        return getSize (root);
+    }
+    public int getSize ( AVLTreeNode<dataType> node )
+    {
+        if (node == null)
+            return 0;
+        else
+            return 1 + getSize (node.getLeft ()) + getSize (node.getRight ());
+    }
+
 }
