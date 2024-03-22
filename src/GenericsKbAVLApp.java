@@ -28,21 +28,21 @@ public class GenericsKbAVLApp
 
     public GenericsKbAVLApp()
     {
-        read();
+        read("GenericsKB-queries.txt");
     }
 
     /**
      * Method to read in data from file
      */
-    public static void read()
+    public static void read(String q)
     {
         try
         {
             //Start - code used to find the path of the text files
             String relativePath = "lib/GenericsKB.txt";
             String relativePath1 = "Assignment_2/lib/GenericsKB.txt";
-            String relativePath2 = "lib/GenericsKB-queries.txt";
-            String relativePath3 = "Assignment_2/lib/GenericsKB-queries.txt";
+            String relativePath2 = "lib/"+q;
+            String relativePath3 = "Assignment_2/lib/"+q;
             File fileTemp = new File("");
             String absolutePath = "";
             String absolutePath1 = "";
@@ -91,7 +91,7 @@ public class GenericsKbAVLApp
 
     public static void main(String[] args)
     {
-        read();
+        read("Part1.txt");
         String line;
         for (int i = 0; i < query.size(); i++)
         {
